@@ -1,0 +1,147 @@
+/*
+|--------------------------------------------------------------------------
+| Global Styles & Utilities
+|--------------------------------------------------------------------------
+*/
+
+/* Custom Scrollbar for better dark mode aesthetics */
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: #0d1117; /* Dark background color */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #38bdf8; /* Blue color for the scroll thumb */
+    border-radius: 10px;
+}
+
+/* Base link styling for hover effect consistency */
+a.hover-text-white {
+    transition: color 0.3s ease;
+}
+
+a.hover-text-white:hover {
+    color: #ffffff !important;
+}
+
+/* Custom utility class for rounded-xl (not native to Bootstrap) */
+.rounded-xl {
+    border-radius: 1rem; /* Adjust as needed */
+}
+
+/*
+|--------------------------------------------------------------------------
+| Star Background Animation
+|--------------------------------------------------------------------------
+| Creates a subtle animated star effect for the dark background.
+| NOTE: Replace the placeholder background-image URL if you find a better star texture.
+*/
+
+@keyframes move-twinkle {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -10000px -10000px;
+    }
+}
+
+#star-background {
+    /* Using a base image with stars. You'll need to create or find a star pattern PNG/SVG. */
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAL0lEQVR42u3BAQEAAAACIP+vhlkAgAAAAAAAAAAAAAAAAAAAAAAAAA4/wAC0YAAAW4HAAAAAElFTkSuQmCC'); /* Placeholder: Replace with actual subtle star texture */
+    background-repeat: repeat;
+    background-size: 500px 500px; /* Adjust size for star density */
+    opacity: 0.1; /* Very subtle transparency */
+    animation: move-twinkle 3600s linear infinite; /* Slow, continuous movement */
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Home Section (Hero) Styles
+|--------------------------------------------------------------------------
+*/
+
+/* 1. Profile Picture Hover Effect: Grayscale to Color */
+#hero-profile-pic {
+    filter: grayscale(100%); /* Start in Black & White */
+    transition: filter 0.5s ease-in-out, transform 0.5s ease;
+    transform: scale(1);
+    border: 5px solid #38bdf8; /* Blue border for the circle */
+}
+
+#hero-profile-pic:hover {
+    filter: grayscale(0%); /* Full Color on Hover */
+    transform: scale(1.05); /* Subtle zoom effect */
+}
+
+/*
+|--------------------------------------------------------------------------
+| Projects Section Styles
+|--------------------------------------------------------------------------
+*/
+
+/* 2. Project Card Hover Effect: Lift and Shadow */
+.card.bg-dark {
+    border: 1px solid #161b22; /* Subtle dark border */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card.bg-dark:hover {
+    transform: translateY(-5px); /* Lift the card up */
+    border-color: #0ea5e9; /* Highlight border with info color */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 10px #0ea5e940; /* Stronger shadow with a blue glow */
+}
+
+/*
+|--------------------------------------------------------------------------
+| Experience Section (Timeline) Styles
+|--------------------------------------------------------------------------
+*/
+
+/* General styling for the timeline cards */
+#experience .bg-dark {
+    border: 1px solid #21262d; /* Subtle separation for timeline items */
+}
+
+/* Ensure experience list items have bullet points */
+#experience ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+}
+
+/* Ensure the stacked images look good and are responsive */
+#experience .rounded-3 {
+    border: 3px solid #161b22; /* Separator border for stacked photos */
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Subtle hover effect for the stacked experience photos */
+#experience .rounded-3:hover {
+    border-color: #0ea5e9;
+    transform: scale(1.02);
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Responsive Adjustments
+|--------------------------------------------------------------------------
+*/
+
+/* Adjust spacing/sizing for smaller screens */
+@media (max-width: 768px) {
+    #home .display-3 {
+        font-size: 2.5rem !important; /* Smaller text on mobile */
+    }
+
+    #hero-profile-pic {
+        width: 200px !important;
+        height: 200px !important;
+    }
+
+    /* On mobile, stack the photos and text cleanly */
+    #experience .col-lg-4 {
+        order: 2; /* Put photos *after* the text on small screens if desired, or keep default */
+    }
+}
